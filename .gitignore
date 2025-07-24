@@ -1,0 +1,37 @@
+# Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment files
+.env
+*.env
+
+# Airflow-related
+airflow.cfg
+airflow.db
+airflow_logs/
+*.log
+
+# Jupyter Notebook checkpoints (if used)
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+.env/
+
+# IDE-specific
+.vscode/
+.idea/
+
+# Mac OS specific
+.DS_Store
+
+# CSV or local raw/transformed data files (optional)
+*.csv
+*.db
+
+# AWS credentials (only if accidentally stored)
+*.pem
+.aws/
