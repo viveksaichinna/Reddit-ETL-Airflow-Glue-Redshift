@@ -6,7 +6,8 @@ This project demonstrates a modular ETL workflow where Reddit data is extracted 
 
 ## 🚀 Project Overview
 
-### 🔹 Steps Involved:
+### 🔹 Steps Involved & Architecture:
+![Reddit ETL Architecture](ETL_Arch_img.png)
 
 1. **Data Extraction & Load to S3 (Orchestrated by Airflow)**
 
