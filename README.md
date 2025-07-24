@@ -41,28 +41,6 @@ This project demonstrates a modular ETL workflow where Reddit data is extracted 
 * **Amazon Redshift** – Analytics and BI-ready storage
 * **IAM** – Secure, role-based access between services
 
----
-
-## 📁 Project Structure
-
-```
-Reddit_AWS/
-│
-├── dags/                       # Airflow DAGs
-│   └── reddit_to_s3_dag.py
-│
-├── glue_jobs/                 # AWS Glue script(s)
-│   └── transform_reddit_data.py
-│
-├── data/                      # Local sample or test data
-│   └── sample_reddit_data.csv
-│
-├── requirements.txt           # Python dependencies
-├── .gitignore
-└── README.md
-```
-
----
 
 ## ✅ Prerequisites
 
