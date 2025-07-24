@@ -1,4 +1,4 @@
-# Reddit ETL Pipeline with Airflow, AWS Glue, Athena, and Redshift
+# Reddit Data Pipeline: End-to-End ETL Workflow using Airflow, AWS Glue, and Redshift for Social Media Analytics
 
 This project demonstrates a modular ETL workflow where Reddit data is extracted using Python and orchestrated via Apache Airflow until it's loaded into Amazon S3. Subsequent transformation and analytics steps are carried out using AWS Glue, Athena, and Redshift.
 
@@ -70,17 +70,49 @@ This project demonstrates a modular ETL workflow where Reddit data is extracted 
    pip install -r requirements.txt
    ```
 
-3. **Add your Reddit API keys and AWS credentials**
+3. **Configure credentials:**
 
-4. **Start Airflow and trigger the DAG:**
+   * Add your **Reddit API keys** in the Airflow DAG script or `.env` file (as applicable)
+   * Ensure your **AWS credentials** are set via `~/.aws/credentials` or environment variables
 
-   * Extracts Reddit data and uploads it to S3.
+4. **Start Apache Airflow via Docker Compose:**
 
-5. **Run AWS Glue job** via the console to transform the raw data.
+   ```bash
+   docker-compose up -d
+   ```
 
-6. **Run Glue Crawler** to catalog the transformed data.
+   This will spin up Airflow in containers with a web UI at `http://localhost:8080`.
 
-7. **Query the data via Athena or load into Redshift** for downstream analytics.
+5. **Trigger the Airflow DAG:**
+
+   * Access Airflow UI
+   * Trigger the `reddit_to_s3_dag`
+   * This will extract Reddit data and upload it to your **raw S3 bucket**
+
+6. **Run the AWS Glue Job:**
+
+   * Go to AWS Glue Console → **Scripts**
+   * Paste the transformation code from `redit_etl_jobs_drop_column.py`
+   * Configure input (raw S3 path) and output (cleaned S3 path)
+   * Run the job to produce a cleaned dataset
+
+7. **Run AWS Glue Crawler:**
+
+   * Create and run a crawler to scan the **cleaned S3 location**
+   * It will create a table in the Glue Data Catalog
+
+8. **Query Cleaned Data in Athena:**
+
+   * Go to **Amazon Athena**
+   * Choose the database created by the crawler
+   * Write SQL queries to explore the cleaned Reddit data
+
+9. **Load Data into Amazon Redshift (Optional):**
+
+   * Use Redshift's COPY command to load data from S3
+   * Query the loaded data from your Redshift cluster for BI or analytics
+
+
 
 ---
 
@@ -96,10 +128,10 @@ This project demonstrates a modular ETL workflow where Reddit data is extracted 
 
 **Vivek Sai Chinna Burada**
 Data Engineer | AWS | ETL | Analytics | GenAI
-[LinkedIn](https://www.linkedin.com/in/viveksaichinna) • [GitHub](https://github.com/viveksaichinna)
+[LinkedIn](https://www.linkedin.com/in/vivek-sai-chinna-burada-a50873215/) • [GitHub](https://github.com/viveksaichinna)
 
 ---
 
-## 📋 License
 
-This project is licensed under the MIT License.
+
+
